@@ -15,6 +15,16 @@
     "nodemon": "^3.1.14"
   },
   "dependencies": {
-    "express": "^5.2.1"
-  }
+    "express": "^5.2.1",
+    "mongoose": "^9.7.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sanrose-Bhets/professionals-backend.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Sanrose-Bhets/professionals-backend/issues"
+  },
+  "homepage": "https://github.com/Sanrose-Bhets/professionals-backend#readme"
 }
