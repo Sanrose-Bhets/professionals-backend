@@ -1,21 +1,21 @@
+require('dotenv').config();
+
 const express = require('express');
+const professionals = require('./data/professional.js');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 //connecting to DB
-const mongoose = require(mongoose);
-mongoose.connect("mongodb://localhost:27017/professionalsDB",{
-  userNewUrlParser: true,
-  useUnifiedTopology:true,
-})
-.then(() => console.log("connected to MongoDB"))
-.catch((err) => console.error("Could not Connect to Mongo DB",err2))
+const mongoose = require("mongoose");
+
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log("connected to MongoDB"))
+  .catch((err) => console.error("Could not Connect to Mongo DB", err));
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
 
 // import professionals data
-const professionals = require('./data/professional.js');
 
 //importing routes
 const professionalRoutes = require("./routes/professionalroutes")

@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const professionals = require("../data/professional")
+const Professional = require("../models/professional.js");
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  const professionals = await Professional.find()
   res.json(professionals);
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   const professionalId = parseInt(req.params.id);
   const professional = professionals.find(p => p.id === professionalId);
 
@@ -17,19 +19,21 @@ router.get('/:id', (req, res) => {
   res.json(professional);
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   if (!req.body.name || !req.body.category) {
     return res.status(400).json({ error: 'Name and category are required' });
   }
 
   const newProfessional = {
-    id: professionals.length + 1,
     name: req.body.name,
     category: req.body.category,
+    tags: req.body.tags || [],
+    isActive: req.body.isActive !== undefined ? req.body.isActive : true
   };
 
-  professionals.push(newProfessional);
-  res.status(201).json(newProfessional);
+  
+  const professional=await Professional.create(newProfessional);
+  res.status(201).json(professional);
 });
 
 router.put('/:id', (req, res) => {
