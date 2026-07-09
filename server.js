@@ -15,7 +15,6 @@ mongoose.connect(process.env.MONGODB_URI)
 // Middleware to parse JSON request bodies
 app.use(express.json());
 
-// import professionals data
 
 //importing routes
 const professionalRoutes = require("./routes/professionalroutes")
