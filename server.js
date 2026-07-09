@@ -22,6 +22,12 @@ const professionalRoutes = require("./routes/professionalroutes")
 //using the app
 app.use("/api/professionals", professionalRoutes)
 
+//importing routes
+const userRoutes = require("./routes/userRoutes")
+
+//using the app
+app.use("/api/auth", userRoutes)
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);

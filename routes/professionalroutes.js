@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const professionals = require("../data/professional")
-const Professional = require("../models/professional.js");
+const Professional = require("../models/Professional.js");
 
 router.get('/', async (req, res) => {
   const professionals = await Professional.find()

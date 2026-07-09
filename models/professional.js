@@ -14,7 +14,7 @@ const professionalSchema=new mongoose.Schema({
     isActive: {
         type: Boolean,
         default: true
-    }
+    },
 }, {
     timestamps:true, // Automaitcally adds Creted AT and updatedAt fields
 
